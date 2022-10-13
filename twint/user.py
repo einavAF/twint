@@ -47,7 +47,6 @@ def User(ur):
         _usr.url = ur['data']['user']['legacy']['url']
     except:
         _usr.url = ''
-    try:
         
    
     # parsing date to user-friendly format
