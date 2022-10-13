@@ -23,12 +23,33 @@ def User(ur):
         logme.fatal(msg)
         raise KeyError(msg)
     _usr = user()
-    _usr.id = ur['data']['user']['rest_id']
-    _usr.name = ur['data']['user']['legacy']['name']
-    _usr.username = ur['data']['user']['legacy']['screen_name']
-    _usr.bio = ur['data']['user']['legacy']['description']
-    _usr.location = ur['data']['user']['legacy']['location']
-    _usr.url = ur['data']['user']['legacy']['url']
+    try: 
+        _usr.id = ur['data']['user']['rest_id']
+    except:
+        _usr.id = ''
+    try:
+        _usr.name = ur['data']['user']['legacy']['name']
+    except:
+        _usr.name = ''
+    try:   
+        _usr.username = ur['data']['user']['legacy']['screen_name']
+    except:
+        _usr.username = ''
+    try:   
+        _usr.location = ur['data']['user']['legacy']['location']
+    except:
+        _usr.location = ''
+    try:
+        _usr.bio = ur['data']['user']['legacy']['description']
+    except:
+        _usr.bio = ''
+    try:
+        _usr.url = ur['data']['user']['legacy']['url']
+    except:
+        _usr.url = ''
+    try:
+        
+   
     # parsing date to user-friendly format
     _dt = ur['data']['user']['legacy']['created_at']
     _dt = datetime.datetime.strptime(_dt, '%a %b %d %H:%M:%S %z %Y')
